@@ -7,23 +7,24 @@ Created on Fri Jul  5 22:41:28 2019
 
 
 def merge(l1,l2):
-    l3=[]
+    merged=[]
     i=j=0
     max1=len(l1)
     max2=len(l2)
     while(i<max1 and j<max2):
         if(l1[i]<l2[j]):
-            l3.append(l1[i])
+            merged.append(l1[i])
             i+=1
             
         else:
-            l3.append(l2[j])
+            merged.append(l2[j])
             j+=1
     if(i<max1):
-        l3.append(l1[i])
+        merged.extend(l1[i:])
     if(j<max2):
-        l3.append(l2[j])
-    return l3
+        merged.extend(l2[j:])
+    return merged
+
 def mergesort(unsorted):
     max=len(unsorted)
     if(max>1):
@@ -36,8 +37,9 @@ def mergesort(unsorted):
         return sorted
     else:
         return unsorted
-l23=[2,5,6,3,65,34,6,67,5,8,45,67,3,78,3,87,35,7,78]
+    
+#example=[2,5,6,3,65,34,6,67,5,8,45,67,3,78,3,87,35,7,78]
 
 
-l32=mergesort(l23)
-print(l32)
+#merged2=mergesort(example)
+#print(merged2)
