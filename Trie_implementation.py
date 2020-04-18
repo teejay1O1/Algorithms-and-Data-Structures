@@ -12,17 +12,18 @@ class Trie:
         #if len(word)==0 :
         #   pass
         node=self.root
-        for i in range(len(word)):
-            prev=node
-            node=node.children.get(word[i],TrieNode(word[i]))
-            prev.children[word[i]]=node
+        for char in word:
+            if char not in node.children:
+                node.children[char]=TrieNode(char)
+            node=node.children[char]
         node.isTerminal=True
     
     def searchword(self,word):
         node=self.root
-        for i in range(len(word)):
-            node=node.children.get(word[i])
-            if node is None :
+        for char in word:
+            if char in node.children:
+                node=node.children[char]
+            else:
                 return False
         return node.isTerminal
 """
